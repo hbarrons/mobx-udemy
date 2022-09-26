@@ -25,12 +25,12 @@ class Person {
 
 const newPerson = new Person('Matt', 'Damon')
 
-newPerson.setAge(50)
+// newPerson.setAge(50)
 
-autorun(async () => {
-    console.log(`Person Name Is: ${newPerson.firstName} ${newPerson.lastName} (${newPerson.age})`);
-    console.log(newPerson)
-});
+// autorun(async () => {
+//     console.log(`Person Name Is: ${newPerson.firstName} ${newPerson.lastName} (${newPerson.age})`);
+//     console.log(newPerson)
+// });
 
 runInAction(() => {
     newPerson.firstName = 'Will';
@@ -41,6 +41,6 @@ runInAction(() => {
 newPerson.setAge(30)
 // newPerson.updateFullName('Will', 'Hunting')
 
-console.log(newPerson)
+// console.log(newPerson)
 
 export {};
