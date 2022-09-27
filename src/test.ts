@@ -28,9 +28,9 @@ const newPerson = new Person('Matt', 'Damon')
 
 newPerson.setAge(50)
 
-autorun(() => {
-    console.log(`Person Name Is: ${newPerson.firstName} ${newPerson.lastName} (${newPerson.age})`);
-});
+// autorun(() => {
+//     console.log(`Person Name Is: ${newPerson.firstName} ${newPerson.lastName} (${newPerson.age})`);
+// });
 
 // runInAction(() => {
 //     newPerson.firstName = 'Will';
