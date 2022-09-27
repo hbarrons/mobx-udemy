@@ -23,7 +23,7 @@ export default class TodoStore {
 
     @action
     addToDo(name: string, userId: number) {
-        this.todolist.push(new ToDo(name, userId))
+        this.todolist.push(new ToDo(name, userId, this))
     }
 
     getUserTodos(userId: number){

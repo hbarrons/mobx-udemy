@@ -1,4 +1,5 @@
 import {action, makeObservable, observable, reaction} from "mobx";
+import TodoStore from "./todo-store";
 
 
 let runningId = 0
@@ -11,13 +12,16 @@ export default class ToDo {
     @observable name: string = '';
     @observable isCompleted: boolean = false;
 
-    private disposer: () => void;
+    private todoStore: TodoStore
 
-    constructor(name: string, userId: number) {
+    private readonly disposer: () => void;
+
+    constructor(name: string, userId: number, todoStore: TodoStore) {
         makeObservable(this)
 
         this.name = name
         this.userId = userId
+        this.todoStore = todoStore
 
         this.disposer = reaction(
             () => this.isCompleted,
