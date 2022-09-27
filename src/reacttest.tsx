@@ -7,9 +7,9 @@ import {Observer, useObserver} from "mobx-react";
 const newTodo = new ToDo('New Todo', 99, new TodoStore())
 
 const Test = () => {
-    return (
+    return useObserver(()=>
         <div>
-            <Observer>{()=> <div>{newTodo.name}</div>}</Observer>
+            <div>{newTodo.name}</div>
             <button onClick={()=>newTodo.updateName('first name')}>First Name</button>
             <button onClick={()=>newTodo.updateName('last name')}>Last Name</button>
         </div>
