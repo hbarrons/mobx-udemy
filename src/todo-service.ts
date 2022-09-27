@@ -55,6 +55,7 @@ class TodoList {
             () => this.list.length > 0 && this.list.every(todo => todo.isCompleted),
             () => console.log('Great Work!')
         )
+
     }
 
     @action
