@@ -11,10 +11,15 @@ import {StoreProvider} from "./stores/Helper/store-context";
 
 const rootStore = createStore()
 
-rootStore.dataStores.todoStore.addToDo('Connect MobX to React', 99)
-rootStore.dataStores.todoStore.addToDo('Finish Udemy Course', 99)
-rootStore.dataStores.todoStore.addToDo('Learn EIM mobx Code', 99)
-
+//create users
+rootStore.dataStores.usersStore.addUser('Howard')
+rootStore.dataStores.usersStore.addUser('Nicole')
+rootStore.dataStores.usersStore.addUser('Shelbie')
+rootStore.dataStores.usersStore.addUser('Sam')
+//
+// rootStore.dataStores.todoStore.addToDo('Connect MobX to React', 99)
+// rootStore.dataStores.todoStore.addToDo('Finish Udemy Course', 99)
+// rootStore.dataStores.todoStore.addToDo('Learn EIM mobx Code', 99)
 
 ReactDOM.render(
     <StoreProvider value={rootStore}>

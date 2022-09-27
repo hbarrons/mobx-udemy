@@ -1,18 +1,25 @@
 import RootStore from "../root-store";
-import {autorun, makeObservable} from "mobx";
+import {action, autorun, makeObservable, observable} from "mobx";
+
+export enum Views {
+    Todos = 'Todos',
+    Users = 'Users'
+}
 
 
 export default class GlobalView {
+    private rootStore: RootStore;
+
+    @observable
+    currentView: Views = Views.Todos;
+
     constructor(rootStore: RootStore) {
-        autorun(() => console.log(
-            `We have ${rootStore.dataStores.usersStore.collection.length} users.
-            User Names: ${rootStore.dataStores.usersStore.collection.map(
-                user=> user.name
-            )}.
-            We have ${rootStore.dataStores.todoStore.todolist.length} Todos!
-            Todo Items: ${rootStore.dataStores.todoStore.todolist.map(
-                todo => todo.name
-            )}.`
-        ))
+        makeObservable(this)
+        this.rootStore = rootStore
+    }
+
+    @action
+    updateView(view: Views) {
+        this.currentView = view;
     }
 }
