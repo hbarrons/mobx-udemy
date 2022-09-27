@@ -1,12 +1,13 @@
 import React, {FunctionComponent, useState} from "react";
 import ToDo from "../stores/data/todos/todo";
+import {observer} from "mobx-react";
 
 
 interface Props {
     todo: ToDo
 }
 
-const TodoComponent: FunctionComponent<Props> = ({todo}) => {
+const TodoComponent: FunctionComponent<Props> = observer(({todo}) => {
     const [isEditing, setEditing] = useState(false);
     const [text, setText] = useState('')
 
@@ -33,6 +34,6 @@ const TodoComponent: FunctionComponent<Props> = ({todo}) => {
             {removeTodo}
         </li>
     )
-}
+})
 
 export default TodoComponent
