@@ -1,4 +1,4 @@
-import {action, autorun, observable, runInAction} from "mobx";
+import {action, autorun, makeObservable, observable, runInAction} from "mobx";
 
 class Person {
     @observable firstName: string = '';
@@ -7,6 +7,7 @@ class Person {
     @observable isAlive: boolean = true;
 
     constructor(name: string, lastName: string) {
+        makeObservable(this)
         this.firstName = name;
         this.lastName = lastName;
     }
@@ -25,19 +26,18 @@ class Person {
 
 const newPerson = new Person('Matt', 'Damon')
 
-// newPerson.setAge(50)
+newPerson.setAge(50)
 
-// autorun(async () => {
-//     console.log(`Person Name Is: ${newPerson.firstName} ${newPerson.lastName} (${newPerson.age})`);
-//     console.log(newPerson)
-// });
+autorun(() => {
+    console.log(`Person Name Is: ${newPerson.firstName} ${newPerson.lastName} (${newPerson.age})`);
+});
 
-runInAction(() => {
-    newPerson.firstName = 'Will';
-    newPerson.lastName = 'Hunting'
-    newPerson.isAlive = false;
-})
-
+// runInAction(() => {
+//     newPerson.firstName = 'Will';
+//     newPerson.lastName = 'Hunting'
+//     newPerson.isAlive = false;
+// })
+newPerson.updateFullName('Will', 'Hunting')
 newPerson.setAge(30)
 // newPerson.updateFullName('Will', 'Hunting')
 
