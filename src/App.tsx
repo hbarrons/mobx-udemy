@@ -3,6 +3,8 @@ import './App.css';
 import {useStore} from "./stores/Helper/use-store";
 import {Views} from "./stores/ui/global-view";
 import {observer} from "mobx-react";
+import TodoList from "./components/TodoList";
+
 
 
 function App() {
@@ -11,7 +13,7 @@ function App() {
 
     const getCurrentView = () => {
         if (globalView.currentView === Views.Todos) {
-            return <div>Todos</div>
+            return <TodoList />
         }
 
         if (globalView.currentView === Views.Users) {
@@ -23,10 +25,11 @@ function App() {
         <div className="App">
             <nav className="navbar navbar-dark bg-dark">
                 <div style={{flexDirection: 'row'}} className="navbar-nav">
-                    <span className="nav-item active">
+                    <span style={{padding: '10px'}} className={`nav-item ${globalView.currentView === Views.Todos ? 'active' : null}`}>
                         <a className="nav-link" onClick={()=> globalView.updateView(Views.Todos)} href="#">{`${Views.Todos}`} View</a>
                     </span>
-                    <span className="nav-item active">
+                    <br/>
+                    <span style={{padding: '10px'}} className={`nav-item ${globalView.currentView === Views.Users ? 'active' : null}`}>
                         <a className="nav-link" onClick={()=> globalView.updateView(Views.Users)} href="#">{`${Views.Users}`}  View</a>
                     </span>
                 </div>
