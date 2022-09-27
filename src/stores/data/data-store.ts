@@ -11,6 +11,6 @@ export default class {
     constructor(rootStore: RootStore) {
         makeObservable(this)
         this.todoStore = new TodoStore();
-        this.usersStore = new UsersStore();
+        this.usersStore = new UsersStore(rootStore);
     }
 }

@@ -6,15 +6,18 @@ let runningId = 0
 export default class ToDo {
     id: number = runningId++
 
+    userId: number;
+
     @observable name: string = '';
     @observable isCompleted: boolean = false;
 
     private disposer: () => void;
 
-    constructor(name: string) {
+    constructor(name: string, userId: number) {
         makeObservable(this)
 
         this.name = name
+        this.userId = userId
 
         this.disposer = reaction(
             () => this.isCompleted,
