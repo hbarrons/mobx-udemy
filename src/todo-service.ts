@@ -64,6 +64,11 @@ class TodoList {
     }
 
     @action
+    getToDo(name: string){
+        return this.list.find(todo => todo.name === name)
+    }
+
+    @action
     removeToDo(name: string) {
         const todoToRemove = this.list.find(todo => todo.name === name)
 
@@ -86,5 +91,17 @@ class TodoList {
 
 }
 
+const todoList = new TodoList();
+
+todoList.addToDo('OMG')
+todoList.addToDo('LOL')
+todoList.addToDo('BRB')
+
+// @ts-ignore
+todoList.getToDo('OMG').updateName('LMAO')
+// @ts-ignore
+todoList.getToDo('LOL').toggleToDo()
+// @ts-ignore
+todoList.getToDo('BRB').toggleToDo()
 
 export {};
