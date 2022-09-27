@@ -36,8 +36,8 @@ export default class TodoStore {
     }
 
     @action
-    removeToDo(name: string) {
-        const todoToRemove = this.todolist.find(todo => todo.name === name)
+    removeToDo(id: number) {
+        const todoToRemove = this.todolist.find(todo => todo.id === id)
 
         if (todoToRemove) {
             todoToRemove.dispose();

@@ -37,6 +37,11 @@ export default class ToDo {
     }
 
     @action
+    remove() {
+        this.todoStore.removeToDo(this.id);
+    }
+
+    @action
     toggleToDo(){
         this.isCompleted = !this.isCompleted
     }

@@ -28,7 +28,7 @@ export default class UserStore {
         const user = this.getUser(name)
 
         if (user){
-            user.todos.forEach(todo => this.rootStore.dataStores.todoStore.removeToDo(todo.name))
+            user.todos.forEach(todo => this.rootStore.dataStores.todoStore.removeToDo(todo.id))
             const userIdxToRemove = this.collection.indexOf(user)
             this.collection.splice(userIdxToRemove, 1)
 
