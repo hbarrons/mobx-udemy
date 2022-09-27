@@ -6,6 +6,26 @@ import reportWebVitals from './reportWebVitals';
 
 import './test'
 import './todo-service'
+import RootStore from "./stores/root-store";
+
+const rootStore = new RootStore();
+
+//create 4 users
+rootStore.dataStores.usersStore.addUser('Howard')
+rootStore.dataStores.usersStore.addUser('Nicole')
+rootStore.dataStores.usersStore.addUser('Shelbie')
+rootStore.dataStores.usersStore.addUser('Sam')
+
+//get user
+const newUser = rootStore.dataStores.usersStore.getUser('Howard')
+
+//add todos to the user
+rootStore.dataStores.todoStore.addToDo('Go to the gym', newUser.id);
+rootStore.dataStores.todoStore.addToDo('Learn mobx', newUser.id)
+
+//remove user
+rootStore.dataStores.usersStore.removeUser('Howard')
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

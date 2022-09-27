@@ -93,15 +93,15 @@ class TodoList {
 
 const todoList = new TodoList();
 
-todoList.addToDo('OMG')
-todoList.addToDo('LOL')
-todoList.addToDo('BRB')
-
-// @ts-ignore
-todoList.getToDo('OMG').updateName('LMAO')
-// @ts-ignore
-todoList.getToDo('LOL').toggleToDo()
-// @ts-ignore
-todoList.getToDo('BRB').toggleToDo()
+// todoList.addToDo('OMG')
+// todoList.addToDo('LOL')
+// todoList.addToDo('BRB')
+//
+// // @ts-ignore
+// todoList.getToDo('OMG').toggleToDo()
+// // @ts-ignore
+// todoList.getToDo('LOL').toggleToDo()
+// // @ts-ignore
+// todoList.getToDo('BRB').toggleToDo()
 
 export {};
