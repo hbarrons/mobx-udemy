@@ -1,11 +1,13 @@
 import React, {useState} from "react";
 import {useStore} from "../stores/Helper/use-store";
 import {observer} from "mobx-react";
+import TodoList from "./TodoList";
 
 
 const UserList = () => {
     const {dataStores: {usersStore}} = useStore();
     const [text, setText] = useState('');
+    const [currentUser, setCurrentUser] = useState(usersStore.collection[0]);
 
     const addUser = () => {
         if (text.length <= 2) {
@@ -14,6 +16,7 @@ const UserList = () => {
         }
 
         usersStore.addUser(text);
+        setCurrentUser(usersStore.collection[usersStore.collection.length-1])
         setText('')
     }
 
@@ -30,15 +33,15 @@ const UserList = () => {
                 </div>
                 <ul className="list-group">
                     {usersStore.collection.map(user => (
-                        <li className="list-group-item">
+                        <li onClick={() => setCurrentUser(user)} key={user.id} className={`list-group-item ${currentUser.id === user.id ? 'active' : 'hover'}`}>
                             <span>{user.name}</span>
-                            <button className="btn btn-danger" onClick={()=>usersStore.removeUser(user.name)}>Remove</button>
+                            <button className="btn btn-danger float-end" onClick={()=>usersStore.removeUser(user.name)}>Remove</button>
                         </li>
                     ))}
                 </ul>
             </div>
             <div className="col-sm-8">
-                Todos
+                <TodoList user={currentUser}/>
             </div>
         </div>
     )

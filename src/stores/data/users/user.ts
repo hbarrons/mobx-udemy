@@ -24,4 +24,14 @@ export default class User {
     get todos() {
         return this.rootStore.dataStores.todoStore.getUserTodos(this.id)
     }
+
+    @computed
+    get completed() {
+        return this.todos.filter(todo => todo.isCompleted)
+    }
+
+    @computed
+    get incomplete() {
+        return this.todos.filter(todo => !todo.isCompleted)
+    }
 }

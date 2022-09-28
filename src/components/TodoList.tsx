@@ -1,10 +1,15 @@
-import React, {useState} from "react";
+import React, {FunctionComponent, useState} from "react";
 import {useStore} from "../stores/Helper/use-store";
 import TodoComponent from "./Todo";
 import {observer} from "mobx-react";
+import User from "../stores/data/users/user";
+
+interface Props {
+    user ? : User;
+}
 
 
-const TodoList = () => {
+const TodoList: FunctionComponent<Props> = ({user}) => {
     const {dataStores: {todoStore}} = useStore()
     const [text, setText] = useState('');
 
@@ -14,9 +19,12 @@ const TodoList = () => {
             return;
         }
 
-        todoStore.addToDo(text, 999);
+        todoStore.addToDo(text, user ? user.id : 999);
         setText('')
     }
+
+    const completedTodos = user ? user.completed : todoStore.completed
+    const incompleteTodos = user ? user.incomplete : todoStore.incomplete
 
     return (
         <div>
@@ -30,18 +38,18 @@ const TodoList = () => {
             </div>
             <div className="card">
                 <div className="card-header">
-                    Incomplete Todos ({todoStore.incomplete.length})
+                    Incomplete Todos ({incompleteTodos.length})
                 </div>
                 <ul className="list-group">
-                    {todoStore.incomplete.map(todo => <TodoComponent key={todo.id} todo={todo} />)}
+                    {incompleteTodos.map(todo => <TodoComponent key={todo.id} todo={todo} />)}
                 </ul>
             </div>
             <div className="card">
                 <div className="card-header">
-                    Complete Todos ({todoStore.completed.length})
+                    Complete Todos ({completedTodos.length})
                 </div>
                 <ul className="list-group">
-                    {todoStore.completed.map(todo => <TodoComponent key={todo.id} todo={todo} />)}
+                    {completedTodos.map(todo => <TodoComponent key={todo.id} todo={todo} />)}
                 </ul>
             </div>
         </div>
