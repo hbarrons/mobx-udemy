@@ -4,6 +4,7 @@ import {useStore} from "./stores/Helper/use-store";
 import {Views} from "./stores/ui/global-view";
 import {observer} from "mobx-react";
 import TodoList from "./components/TodoList";
+import UserList from "./components/UserList";
 
 
 
@@ -17,7 +18,7 @@ function App() {
         }
 
         if (globalView.currentView === Views.Users) {
-            return <div>Users</div>
+            return <UserList />
         }
     }
 

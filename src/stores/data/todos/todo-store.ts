@@ -31,8 +31,8 @@ export default class TodoStore {
     }
 
     @action
-    getToDo(name: string){
-        return this.todolist.find(todo => todo.name === name)
+    getToDo(id: number){
+        return this.todolist.find(todo => todo.id === id)
     }
 
     @action

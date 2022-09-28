@@ -17,7 +17,7 @@ const TodoComponent: FunctionComponent<Props> = observer(({todo}) => {
         setText('')
     }
 
-    const todoName = isEditing ? <input type="text" value={text} onChange={e => setText(e.target.value)}/> :
+    const todoName = isEditing ? <span><input type="text" value={text} onChange={e => setText(e.target.value)}/></span> :
         <span>Name: {todo.name}, UserId: {todo.userId}</span>;
 
     const editButton = isEditing ? <button className="btn btn-primary float-end" onClick={saveTodo}>Save</button> :
